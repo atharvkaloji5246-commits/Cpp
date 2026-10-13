@@ -1,0 +1,49 @@
+#include <iostream>
+using namespace std;
+
+class Product {
+public:
+    string name;
+    float price;
+    int sales[12];
+
+    void accept() {
+        cout << "Enter product name: ";
+        cin >> name;
+
+        cout << "Enter price per unit: ";
+        cin >> price;
+
+        cout << "Enter monthly sales quantities:\n";
+        for (int i = 0; i < 12; i++) {
+            cout << "Month " << i + 1 << ": ";
+            cin >> sales[i];
+        }
+    }
+
+    void display() {
+        int totalQuantity = 0;
+
+        for (int i = 0; i < 12; i++)
+            totalQuantity += sales[i];
+
+        cout << "\nProduct: " << name;
+        cout << "\nPrice per unit: " << price;
+        cout << "\nTotal quantity sold: " << totalQuantity;
+        cout << "\nTotal bill: " << totalQuantity * price << endl;
+    }
+};
+
+int main() {
+    Product p[2];
+
+    for (int i = 0; i < 2; i++) {
+        cout << "\nEnter details of product " << i + 1 << endl;
+        p[i].accept();
+    }
+
+    for (int i = 0; i < 2; i++)
+        p[i].display();
+
+    return 0;
+}
